@@ -1,12 +1,12 @@
 sources:
   - name: raw
-    schema: homecalc-462817.Electronics_Retailer  
-      - name: sales
-      - name: products
-      - name: exchange_rates
-      - name: customers
-      - name: stores
-
+    schema: Electronics_Retailer 
+    tables:
+      - name: Sales
+      - name: Products
+      - name: Exchange_rates
+      - name: Customers
+      - name: Stores
 models:
   - name: stg_sales
     description: "sales data"

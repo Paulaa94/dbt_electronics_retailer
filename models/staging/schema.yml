@@ -4,7 +4,7 @@ sources:
     tables:
       - name: Sales
       - name: Products
-      - name: Exchange_rates
+      - name: Exchange_Rates
       - name: Customers
       - name: Stores
 models:

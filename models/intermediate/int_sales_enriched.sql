@@ -25,10 +25,12 @@ sales_joined as (
 
 sales_metrics as (
     select
-        *,
+        * ,
+
         quantity * unit_price_usd as revenue_usd,
         quantity * unit_cost_usd as cost_usd,
         quantity * (unit_price_usd - unit_cost_usd) as profit_usd
+
     from sales_joined
 )
 

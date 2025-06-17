@@ -6,9 +6,9 @@ with sales as (
         quantity,
         unit_price_usd,
         unit_cost_usd,
-        quantity * unit_price_usd as revenue_usd,
-        quantity * unit_cost_usd as cost_usd,
-        quantity * (unit_price_usd - unit_cost_usd) as profit_usd
+        revenue_usd,
+        cost_usd,
+        profit_usd
     from {{ ref('int_sales_enriched') }}
 
 ),

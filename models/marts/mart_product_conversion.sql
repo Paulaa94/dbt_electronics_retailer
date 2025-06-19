@@ -16,10 +16,17 @@ conversion as (
     from sales s
     group by s.product_key
 )
+,
+
+filtered as (
+    select *
+    from conversion
+    where total_customers > 0
+)
 
 select
     product_key,
     purchasing_customers,
     total_customers,
     safe_divide(purchasing_customers, total_customers) as product_conversion_rate
-from conversion
+from filtered

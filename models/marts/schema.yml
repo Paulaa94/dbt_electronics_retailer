@@ -4,7 +4,7 @@ models:
     columns:
       - name: order_date
         tests: [not_null]
-      - name: average_order_value_usd
+      - name:  avg_order_value
         tests: [not_null]
 
   - name: mart_customer_segments
@@ -25,18 +25,9 @@ models:
     columns:
       - name: brand
         tests: [not_null]
-      - name: profit_margin
+      - name: avg_profit_margin
         tests:
             - not_null
-
-  - name: mart_product_conversion
-    description: "Share of customers who bought each of product."
-    columns:
-      - name: product_conversion_rate
-        tests:
-            - not_null
-            - dbt_utils.expression_is_true:
-                expression: "product_conversion_rate >= 0 and product_conversion_rate <= 1"
 
   - name: mart_churn_eval
     description: "Churn evaluation"

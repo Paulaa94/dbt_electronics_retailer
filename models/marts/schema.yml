@@ -1,0 +1,49 @@
+models:
+  - name: mart_sales_by_date
+    description: "Daily sales KPIs, for example AOV."
+    columns:
+      - name: order_date
+        tests: [not_null]
+      - name: average_order_value_usd
+        tests: [not_null]
+
+  - name: mart_customer_segments
+    description: "Customers with tenure and LTV."
+    columns:
+      - name: customer_key
+        tests: [not_null, unique]
+      - name: customer_type
+        tests:
+            - accepted_values:
+                values: ['One-time', 'Returning', 'No Orders']
+      - name: customer_tenure_days
+        tests:
+            - not_null
+
+  - name: mart_brand_performance
+    description: "Brands revenue, margin and performance per day."
+    columns:
+      - name: brand
+        tests: [not_null]
+      - name: profit_margin
+        tests:
+            - not_null
+
+  - name: mart_product_conversion
+    description: "Share of customers who bought each of product."
+    columns:
+      - name: product_conversion_rate
+        tests:
+            - not_null
+            - dbt_utils.expression_is_true:
+                expression: "product_conversion_rate >= 0 and product_conversion_rate <= 1"
+
+  - name: mart_churn_eval
+    description: "Churn evaluation"
+    columns:
+      - name: customer_key
+        tests: [not_null]
+      - name: is_churned
+        tests:
+          - accepted_values:
+              values: [1, 0]

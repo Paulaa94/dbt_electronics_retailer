@@ -1,4 +1,4 @@
-with abcd as (
+with base as (
     select
         customer_key,
         current_date() as today,
@@ -9,4 +9,4 @@ with abcd as (
     from {{ ref('int_customers_enriched') }}
 )
 
-select * from abcd
+select * from base
